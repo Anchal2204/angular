@@ -1,0 +1,43 @@
+<h1>{{data1}}</h1>
+<h3>Admin links</h3>
+<ul>
+  <li>
+    <a routerLink="admin/login">Login</a>
+  </li>
+  <li>
+    <a routerLink="admin/list">List</a>
+  </li>
+</ul>
+<br>
+<br>
+<h3>user links</h3>
+<ul>
+  <li>
+    <a routerLink="user/login">Login</a>
+  </li>
+  <li>
+    <a routerLink="user/list">List</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
+<form [formGroup] ="loginForm" (ngSubmit)="loginUser()">
+  <input type="text" placeholder="enter name" formControlName="user">
+  <br>
+  <span style= "color:red" *ngIf="user && user.invalid && user.touched">not valid</span>
+  <br> <br>
+  <input type="email" placeholder="enter email" formControlName="email">
+  <br>
+  <span style= "color:red" *ngIf="email && email.invalid && email.touched">not valid</span>
+  <br> <br>
+  <input type="mobile" placeholder="enter phone number" formControlName="mobile">
+  <br>
+  <span style= "color:red" *ngIf="mobile && mobile.invalid && mobile.touched">not valid</span>
+  <br> <br>
+<button>Login</button>
+</form>
+<br>
+<button (click) ="updateItem()">Update</button>
+<br>
+<app-child [item]="data" (updateDataEvent)="updateData($event)"></app-child>
+<br>
+
